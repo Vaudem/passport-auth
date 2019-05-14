@@ -1,6 +1,6 @@
 # Passport Auth
 
-Passport Auth is a simple back-end application for secure authentication with passport and jsonwebtoken.
+Passport Auth is a simple back-end application for secure authentication :muscle: with passport and jsonwebtoken.
 
 # Description
 
@@ -27,7 +27,7 @@ An user can create an account with email and password.
 _with [postman](https://www.getpostman.com/) a user is created on URL /api/users/register_
 ![postman_register](./screenshots/Screen01-postman.png)
 
-_in PhpMyAdmin we can see that user is created in database with crypted password_
+_in PhpMyAdmin we can see that user is created in database with crypted password_:lock:
 ![phpmyadminn](./screenshots/Screen02-PMA.png)
 
 ### Authenticate
@@ -37,7 +37,7 @@ An user can authenticate with email and password.
 _with postman a user is authenticated on URL /api/users/authenticate_
 ![postman_auth](./screenshots/Screen03-postman_auth.png)
 
-If user's password is correct, a JWT token is generated and will allow user to access some routes, like _/api/dashboard_.
+If user's password is correct, a JWT token is generated and will allow user to access some routes, like _/api/dashboard_ :key:.
 
 ### Authenticate
 
@@ -89,7 +89,7 @@ npm install
 npm run start-dev
 ```
 
-- Enjoy!
+- Enjoy :sparkles:!
 
 # Authors
 
