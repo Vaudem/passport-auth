@@ -1,4 +1,4 @@
-'use strict'
+'use strict' 
 // Import dependencies
 var passport = require('passport');
 var express = require('express');
@@ -17,14 +17,25 @@ module.exports = function (app) {
 
     // Create API group routes
     var apiRoutes = express.Router();
-    var userRoutes = require("./users/users.controller")
+    var userRoutes = require("./users/users.controller");
+    var productRoutes = require("./products/products.controller")
 
-    //Protected authenticated route with JWT
-    apiRoutes.get('/dashboard', requireAuth, function (request, response) {
-        response.send('It worked User id is: ' + request.user.user_id + ', Email id is: ' + request.user.user_email + '.');
+    //Protected authenticated routes with JWT
+    apiRoutes.get('/dashboard', requireAuth, (request, response) => {
+        response.send('It worked User id is: ' + request.user.user_id + ', Email id is: ' + request.user.user_email + ' and type is : ' + request.user.user_type + '.');
     });
+
+    apiRoutes.get('/admin', requireAuth, (request, response) => {
+        if(request.user.user_type == 1){
+            response.send('Welcome ADMIN!  your id is: ' + request.user.user_id + ', and type is: ' + request.user.user_type + '.');
+        } else { 
+            response.send(500);
+        }    
+    });
+
 
     // Set url for API group routes
     app.use('/api', apiRoutes);
     app.use('/api/users', userRoutes);
+    app.use('/api/products', productRoutes);
 };

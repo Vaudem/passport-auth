@@ -11,13 +11,13 @@ module.exports = function (passport) {
         secretOrKey: config.secret
     };
 
-    passport.use(new JwtStrategy(opts, function (jwt_payload, callback) {
-        console.log(jwt_payload);
-        db.findUser({email: jwt_payload.user_email}, function (res) {
+    passport.use(new JwtStrategy(opts, (jwt_payload, callback) => {
+        console.log("jwt_payload : ", jwt_payload);
+        db.findUser({email: jwt_payload.user_email}, (res) => {
             var user = res;
             delete user.password;
             callback(null, user);
-        }, function (err) {
+        }, (err) => {
             return callback(err, false);
         });
     }));
